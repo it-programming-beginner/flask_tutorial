@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>TODOアプリ</title>
+</head>
+
+<body>
+  <form action="/add" method="POST">
+    <input name="name"></input>
+    <input type="submit" value="追加" />
+  </form>
+  {% for idx in todos %}
+  <div><label>{{ todos[idx] }}</label></div>
+  {% endfor %}
+</body>
+
+</html>

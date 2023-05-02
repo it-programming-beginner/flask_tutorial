@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>TODOアプリ</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  {% for idx in todos %}
+  <div><label for="{{ idx }}">{{ todos[idx] }}</label></div>
+  {% endfor %}
+</body>
+
+</html>
