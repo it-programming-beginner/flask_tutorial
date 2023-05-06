@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>TODOアプリ</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <form action="/add" method="POST">
+    <input name="name"></input>
+    <input type="submit" value="追加" />
+  </form>
+  <form action="/delete" method="POST">
+    {% for idx in todos %}
+    <div><input type="checkbox" id="{{ idx }}" name="{{ idx }}"><label for="{{ idx }}">{{ todos[idx] }}</label></div>
+    {% endfor %}
+    <input type="submit" value="削除" />
+  </form>
+</body>
+
+</html>

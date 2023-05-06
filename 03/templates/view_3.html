@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>TODOアプリ</title>
+  <meta charset="utf-8" />
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+              <h4 class="text-center my-3 pb-3">To Do App</h4>
+
+              <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" action="/add" method="POST">
+                <div class="col-12">
+                  <div class="form-outline">
+                    <input class="form-control" name="name"/>
+                    <label class="form-label" for="name">タスクを入力</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit" >追加</button>
+                </div>
+              </form>
+              <form action="/delete" method="POST">
+                {% for idx in todos %}
+                <div><input type="checkbox" id="{{ idx }}" name="{{ idx }}"><label for="{{ idx }}">{{ todos[idx] }}</label></div>
+                {% endfor %}
+                <input type="submit" value="削除" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+></script>
+</html>
