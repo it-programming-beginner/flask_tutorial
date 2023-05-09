@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>TODOアプリ</title>
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+              <h4 class="text-center my-3 pb-3">To Do App</h4>
+
+              <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" action="/add" method="POST">
+                <div class="col-12">
+                  <div class="form-outline">
+                    <input class="form-control" name="name"></input>
+                    <label class="form-label" for="name">タスクを入力</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit" >追加</button>
+                </div>
+              </form>
+
+                <table class="table mb-4">
+                  <thead> 
+                  </thead>
+                  <tbody>
+                    {% for todo in todos %}
+                    <tr class="fw-normal">
+                      <td class="col-1">
+                        <input form="all-bulk-delete" class="form-check-input me-2" type="checkbox" id="all-{{ todo['idx']  }}" name="target" value="{{ todo['idx'] }}">
+                      </td>
+                      <td class="col-7">
+                        <label for="all-{{ todo['idx'] }}">
+                            {{ todo['todo'] }}
+                        </label>
+                      </td>
+                      <td>
+                        <form method="POST">
+                          <input value="{{todo['idx']}}" name="target" type="hidden"/>
+                          <input class="btn btn-danger" formaction="/delete" type="submit" value="削除" />
+                        </form>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <form id="all-bulk-delete" method="POST">
+                  <input  class="btn btn-danger" formaction="/delete" type="submit" value="削除" />
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+  <!-- MDB -->
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+  ></script>
+</html>
