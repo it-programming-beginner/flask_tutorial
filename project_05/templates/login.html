@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h3 class="mb-5">Login</h3>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="notification is-danger">
+                                {{ messages[0] }}
+                            </div>
+                        {% endif %}
+                        {% endwith %}
+                        <form method="POST" action="/login">
+                            <div class="field">
+                                <div class="form-outline mb-4">
+                                    <input class="form-control form-control-lg" type="email" name="email" placeholder="Your Email" autofocus="">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="form-outline mb-4">
+                                    <input class="form-control form-control-lg" type="password" name="password" placeholder="Your Password">
+                                </div>
+                            </div>
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
